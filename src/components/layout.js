@@ -15,10 +15,20 @@ import "./layout.css"
 const Layout = ({ children }) => (
   <StaticQuery
     query={graphql`
-      query SiteTitleQuery {
+      query {
         site {
           siteMetadata {
             title
+          }
+        }
+        github {
+          viewer {
+            name
+            repositories(last: 30) {
+              nodes {
+                name
+              }
+            }
           }
         }
       }
@@ -34,6 +44,8 @@ const Layout = ({ children }) => (
             paddingTop: 0,
           }}
         >
+          <span>{JSON.stringify(data, null, 2)}</span>
+          
           <main>{children}</main>
           <footer>
             © {new Date().getFullYear()}, Built with

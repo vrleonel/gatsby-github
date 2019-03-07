@@ -1,3 +1,17 @@
+const fs = require('fs');
+const fetch = require('node-fetch');
+const {buildClientSchema} = require('graphql');
+const {createHttpLink} = require('apollo-link-http');
+const dotenv = require('dotenv');
+let activeEnv = process.env.ACTIVE_ENV || process.env.NODE_ENV || 'development';
+
+dotenv.config({
+  path: `.env.${activeEnv}`,
+});
+
+const str = JSON.stringify(process.env, null, 2); // (Optional) beautiful indented output.
+
+// console.log(`<>>>>>> ${str}`);
 module.exports = {
   siteMetadata: {
     title: `Gatsby Default Starter`,
@@ -30,5 +44,25 @@ module.exports = {
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // 'gatsby-plugin-offline',
+    {
+      resolve: `gatsby-source-graphql`,
+      options: {
+        fieldName: `github`,
+        typeName: `GitHub`,
+        createLink: () =>
+          createHttpLink({
+            uri: `https://api.github.com/graphql`,
+            headers: {
+              Authorization: `bearer ${process.env.GITHUB_TOKEN}`,
+            },
+            fetch,
+          }),
+        // createSchema: async () => {
+        //   const json = JSON.parse(fs.readFileSync(`${__dirname}/github.json`))
+        //   return buildClientSchema(json.data)
+        // },
+      },
+    },
   ],
+  pathPrefix: '/gatsby-site',
 }
