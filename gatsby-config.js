@@ -9,9 +9,10 @@ dotenv.config({
   path: `.env.${activeEnv}`,
 });
 
-const str = JSON.stringify(process.env, null, 2); // (Optional) beautiful indented output.
-
+// const str = JSON.stringify(process.env, null, 2); 
+// console.log(`###########  ${activeEnv} ############`)
 // console.log(`<>>>>>> ${str}`);
+
 module.exports = {
   siteMetadata: {
     title: `Gatsby Default Starter`,
@@ -64,5 +65,5 @@ module.exports = {
       },
     },
   ],
-  pathPrefix: '/gatsby-site',
+  pathPrefix: '/gatsby-github',
 }
