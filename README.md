@@ -95,3 +95,11 @@ Looking for more guidance? Full documentation for Gatsby lives [on the website](
 [![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/gatsbyjs/gatsby-starter-default)
 
 <!-- AUTO-GENERATED-CONTENT:END -->
+
+## Generating schema.json using apollo
+```shell
+apollo schema:download --endpoint=https://api.github.com/graphql --header="Authorization: bearer f90834ec111da84957adcbfd2658494c223bebbe"
+```
+
+## Deploy Using Github Pages:
+[Deploy with github Pages](https://www.gatsbyjs.org/docs/how-gatsby-works-with-github-pages/)
