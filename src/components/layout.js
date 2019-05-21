@@ -33,6 +33,11 @@ const Layout = ({ children }) => (
                 homepageUrl
                 shortDescriptionHTML
                 isFork
+                isMirror
+                isPrivate
+                owner {
+                  login
+                }
               }
             }
           }
@@ -51,7 +56,7 @@ const Layout = ({ children }) => (
           }}
         >
           <pre>{JSON.stringify(data, null, 2)}</pre>
-          
+
           <main>{children}</main>
           <footer>
             © {new Date().getFullYear()}, Built with
