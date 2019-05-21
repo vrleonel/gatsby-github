@@ -24,9 +24,15 @@ const Layout = ({ children }) => (
         github {
           viewer {
             name
-            repositories(last: 30) {
+            repositories(last: 50) {
               nodes {
+                id
                 name
+                url
+                description
+                homepageUrl
+                shortDescriptionHTML
+                isFork
               }
             }
           }
@@ -44,7 +50,7 @@ const Layout = ({ children }) => (
             paddingTop: 0,
           }}
         >
-          <span>{JSON.stringify(data, null, 2)}</span>
+          <pre>{JSON.stringify(data, null, 2)}</pre>
           
           <main>{children}</main>
           <footer>
